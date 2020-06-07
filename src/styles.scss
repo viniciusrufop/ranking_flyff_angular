@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+html, body { height: 100%; margin: 0; color: #4F325C; font-family: 'Roboto', sans-serif; background-color: #bfdfec;}
+
+.block-ui-spinner, .block-ui-template { display: flex; justify-content: center; align-content: center; align-items: center; }
+
+/** KENDO GRID */
+.k-grid-header{ padding-right: 0 !important; margin-right: -3px !important; }
+.k-grid-header .k-header { padding-left: 25px; font-size: 16px; font-weight: normal; padding-right: 10px; }
+.k-grid-content { overflow-y: auto }
+.k-grid td { padding: 0.2rem 0.2rem 0.2rem 25px; }
+.k-i-filter::before { content: '\e129'; }

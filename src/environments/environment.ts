@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  corsHeroku: 'https://cors-anywhere.herokuapp.com',
+  flyffUrl: 'https://flyff.gpotato.com.br',
 };
 
 /*
