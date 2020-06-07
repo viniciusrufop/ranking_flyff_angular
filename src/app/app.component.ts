@@ -78,12 +78,12 @@ export class AppComponent {
       let rank = cols[0].querySelector('img');
 
       this.ranking.push({
-        rank: rank ? `${environment.flyffUrl}/${rank.src.split('/').slice(3).join('/')}` : cols[0].innerHTML.trim(),
+        rank: rank ? `${environment.flyffUrl}/${rank.src.split('/').slice(-2).join('/')}` : cols[0].innerHTML.trim(),
         nome: cols[1].innerHTML.trim(),
         classe: {
           num: this.getNumClass(cols[2].querySelector('img').src.split('/').slice(-1)[0].split('.')[0]),
-          url1: `${environment.flyffUrl}/${cols[2].querySelector('img').src.split('/').slice(3).join('/')}`,
-          url2: `${environment.flyffUrl}/${cols[2].querySelectorAll('img')[1].src.split('/').slice(3).join('/')}`
+          url1: `${environment.flyffUrl}/${cols[2].querySelector('img').src.split('/').slice(-3).join('/')}`,
+          url2: `${environment.flyffUrl}/${cols[2].querySelectorAll('img')[1].src.split('/').slice(-3).join('/')}`
         },
         tempoOn: parseInt(cols[3].innerHTML.trim()),
         level: cols[4].innerHTML.trim(),
