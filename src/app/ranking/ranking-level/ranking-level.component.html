@@ -1,0 +1,118 @@
+<div class="container-fluid">
+
+  <div *ngIf="refresh" class="row mt-5 mb-5">
+    <div class="col">
+      <p>Problemas ao carregar os dados, tente novamente!</p>
+      <button type="button" class="btn btn-primary" (click)="getHtmlCode()">Recarregar</button>
+    </div>
+  </div>
+
+  <div *ngIf="!refresh" class="row mt-5">
+
+    <div class="col-lg-4 col-xl-4 col-sm-12">
+
+      <div class="row shadow pt-2 pb-2 bg-white rounded">
+        <div class="col">
+          <h1>Estatísticas</h1>
+          <p class="fs-10">Dados obtidos através de
+            <a href="https://flyff.gpotato.com.br/ranking" target="_blank">https://flyff.gpotato.com.br/ranking</a>
+          </p>
+        </div>
+      </div>
+
+      <app-ranking-player-info *ngIf="ranking[0]" title="Top Level" [player]="ranking[0]"></app-ranking-player-info>
+
+      <app-ranking-player-info *ngIf="maiorTempo" title="Mais horas de jogo" [player]="maiorTempo"></app-ranking-player-info>
+
+      <app-ranking-player-info *ngIf="menorTempo" title="Menos horas de jogo" [player]="menorTempo"></app-ranking-player-info>
+
+      <div *ngIf="qtdeClasses" class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
+        <div class="col">
+          <span class="fs-16">Quantidade de cada classe</span>
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th>Classe</th>
+                <th>Quantidade</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of qtdeClasses">
+                <td>{{ item[0] }}</td>
+                <td>{{ item[1] }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-lg-8 col-xl-8 col-sm-12">
+
+      <div class="row pt-2 pb-2 shadow bg-white rounded" [ngClass]="{'ml-0 mr-0': !mobile, 'mt-3': mobile}">
+        <div class="col">
+          <h1>Rank de Level</h1>
+        </div>
+      </div>
+
+      <div class="row mt-3" *ngIf="ranking.length > 0">
+        <div class="col" [ngClass]="{'pl-0 pr-0': mobile}">
+          <kendo-grid [height]="500" [kendoGridBinding]="ranking" [filterable]="true" [sortable]="true">
+
+            <kendo-grid-column class="tx-color-blue"field="rank" title="Rank" [width]="100">
+
+              <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                  operator="eq">
+                </kendo-grid-string-filter-cell>
+              </ng-template>
+
+              <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+                <img *ngIf="dataItem.rank.includes('images')" [src]="dataItem.rank">
+                <span *ngIf="!dataItem.rank.includes('images')">{{ dataItem.rank }}</span>
+              </ng-template>
+
+            </kendo-grid-column>
+
+            <kendo-grid-column field="nome" title="Nome" [width]="150">
+              <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                  operator="contains">
+                </kendo-grid-string-filter-cell>
+              </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column class="tx-color-grey" field="classe.num" title="Classe" [filterable]="false" [width]="150">
+              <ng-template kendoGridCellTemplate let-dataItem>
+                <img [src]="dataItem.classe.url1">
+                <img class="ml-2" [src]="dataItem.classe.url2">
+                {{ dataItem.classe.className }}
+              </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column field="tempoOn" title="Tempo On (horas)" [width]="150">
+              <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                  operator="eq">
+                </kendo-grid-string-filter-cell>
+              </ng-template>
+            </kendo-grid-column>
+
+            <kendo-grid-column field="level" title="Level" [width]="150">
+              <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+                <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                  operator="eq">
+                </kendo-grid-string-filter-cell>
+              </ng-template>
+            </kendo-grid-column>
+
+          </kendo-grid>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
