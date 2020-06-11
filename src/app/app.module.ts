@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 
 import { BlockUIModule } from 'ng-block-ui';
 
-
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +17,7 @@ import { BlockUIModule } from 'ng-block-ui';
     BrowserAnimationsModule,
     HttpClientModule,
     BlockUIModule.forRoot(),
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

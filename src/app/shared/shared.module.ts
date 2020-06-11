@@ -5,6 +5,9 @@ import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import {MatDividerModule} from '@angular/material/divider';
 
+import { ChartsModule } from '@progress/kendo-angular-charts';
+import 'hammerjs';
+
 @NgModule({
   declarations: [],
   imports: [],
@@ -12,7 +15,8 @@ import {MatDividerModule} from '@angular/material/divider';
     CommonModule,
     GridModule,
     MatProgressSpinnerModule,
-    MatDividerModule
+    MatDividerModule,
+    ChartsModule
   ]
 })
 export class SharedModule { }

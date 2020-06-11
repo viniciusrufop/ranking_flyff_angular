@@ -1,13 +1,13 @@
 <div class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
 
-  <div class="col-12">
+  <div class="col-12 fs-20">
     {{ title }}
   </div>
 
   <mat-divider [vertical]="true" style="padding-left: 15px;"></mat-divider>
 
   <div class="col min-width-unset pr-1 pl-1">
-    <div class="fs-11 fw-sb tx-color-grey">Rank</div>
+    <div class="fs-11 fw-500 tx-color-grey">Rank</div>
     <img class="fs-16" *ngIf="player.rank.includes('images')" [src]="player.rank">
     <span class="fs-16 tx-color-blue" *ngIf="!player.rank.includes('images')">{{ player.rank }}</span>
   </div>
@@ -15,28 +15,28 @@
   <mat-divider [vertical]="true"></mat-divider>
 
   <div class="col min-width-unset pr-1 pl-1">
-    <div class="fs-11 fw-sb tx-color-grey">Nome</div>
+    <div class="fs-11 fw-500 tx-color-grey">Nome</div>
     <div class="fs-16 tx-color-blue">{{ player.nome }}</div>
   </div>
 
   <mat-divider [vertical]="true"></mat-divider>
 
   <div class="col min-width-unset pr-1 pl-1">
-    <div class="fs-11 fw-sb tx-color-grey">Classe</div>
+    <div class="fs-11 fw-500 tx-color-grey">Classe</div>
     <div class="fs-16 tx-color-blue">{{ player.classe.className }}</div>
   </div>
 
   <mat-divider [vertical]="true"></mat-divider>
 
   <div class="col min-width-unset pr-1 pl-1">
-    <div class="fs-11 fw-sb tx-color-grey" style="white-space: nowrap;">Tempo On</div>
+    <div class="fs-11 fw-500 tx-color-grey" style="white-space: nowrap;">Tempo On</div>
     <div class="fs-16 tx-color-blue">{{ player.tempoOn }}h</div>
   </div>
 
   <mat-divider [vertical]="true"></mat-divider>
 
   <div class="col min-width-unset pr-1 pl-1">
-    <div class="fs-11 fw-sb tx-color-grey">Level</div>
+    <div class="fs-11 fw-500 tx-color-grey">Level</div>
     <div class="fs-16 tx-color-blue">{{ player.level }}</div>
   </div>
 

@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" style="margin-bottom: 100px">
 
   <div *ngIf="refresh" class="row mt-5 mb-5">
     <div class="col">
@@ -13,7 +13,7 @@
 
       <div class="row shadow pt-2 pb-2 bg-white rounded">
         <div class="col">
-          <h1>Estatísticas</h1>
+          <h1 class="fw-300">Estatísticas</h1>
           <p class="fs-10">Dados obtidos através de
             <a href="https://flyff.gpotato.com.br/ranking" target="_blank">https://flyff.gpotato.com.br/ranking</a>
           </p>
@@ -28,21 +28,27 @@
 
       <div *ngIf="qtdeClasses" class="row mt-3 shadow pt-2 pb-2 bg-white rounded">
         <div class="col">
-          <span class="fs-16">Quantidade de cada classe</span>
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th>Classe</th>
-                <th>Quantidade</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let item of qtdeClasses">
-                <td>{{ item[0] }}</td>
-                <td>{{ item[1] }}</td>
-              </tr>
-            </tbody>
-          </table>
+          <span class="fs-20">Quantidade de cada classe</span>
+
+          <kendo-chart class="ml-n3 mr-n3">
+            <kendo-chart-series>
+              <kendo-chart-series-item
+                [autoFit]="true"
+                type="donut" [data]="qtdeClasses"
+                categoryField="classe"
+                field="quantidade">
+                <kendo-chart-series-item-labels
+                  position="outsideEnd"
+                  [content]="labelContent"
+                  font="14"
+                  color="#333"
+                  background="none">
+                </kendo-chart-series-item-labels>
+              </kendo-chart-series-item>
+            </kendo-chart-series>
+            <kendo-chart-legend [visible]="false"></kendo-chart-legend>
+          </kendo-chart>
+
         </div>
       </div>
 
@@ -52,7 +58,7 @@
 
       <div class="row pt-2 pb-2 shadow bg-white rounded" [ngClass]="{'ml-0 mr-0': !mobile, 'mt-3': mobile}">
         <div class="col">
-          <h1>Rank de Level</h1>
+          <h1 class="fw-300">Rank de Level</h1>
         </div>
       </div>
 

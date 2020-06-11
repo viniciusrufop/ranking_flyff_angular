@@ -29,8 +29,22 @@ export class RankingLevelComponent implements OnInit {
   public refresh = false;
   public maiorTempo: PlayerInfo;
   public menorTempo: PlayerInfo;
-  public qtdeClasses: any;
+  public qtdeClasses: Array<{classe: string, quantidade: number}>;
   public mobile: boolean;
+
+  public dataTeste: any[] = [{
+    kind: 'Hydroelectric', share: 0.175
+  }, {
+    kind: 'Nuclear', share: 0.238
+  }, {
+    kind: 'Coal', share: 0.118
+  }, {
+    kind: 'Solar', share: 0.052
+  }, {
+    kind: 'Wind', share: 0.225
+  }, {
+    kind: 'Other', share: 0.192
+  }];
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
@@ -44,6 +58,10 @@ export class RankingLevelComponent implements OnInit {
   ngOnInit(): void {
     this.mobile = (window.innerWidth <= 415);
     this.getHtmlCode();
+  }
+
+  labelContent(e: any): string {
+    return `${e.category} (${e.dataItem.quantidade})`;
   }
 
   getHtmlCode(): void {
@@ -132,8 +150,13 @@ export class RankingLevelComponent implements OnInit {
     for(let item of this.ranking) {
       objClass[this.classes[item.classe.num]] += 1;
     }
-    
-    this.qtdeClasses = Object.entries(objClass);
+
+    this.qtdeClasses = Object.entries(objClass).map(array => {
+      return {
+        classe: array[0],
+        quantidade: array[1]
+      }
+    });
   }
 
 }
