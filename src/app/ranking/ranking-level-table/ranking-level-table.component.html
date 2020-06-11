@@ -1,0 +1,50 @@
+<kendo-grid [height]="500" [kendoGridBinding]="ranking" [filterable]="true" [sortable]="true">
+
+  <kendo-grid-column class="tx-color-blue"field="rank" title="Rank" [width]="100">
+
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                                     operator="eq">
+      </kendo-grid-string-filter-cell>
+    </ng-template>
+
+    <ng-template kendoGridCellTemplate let-dataItem let-rowIndex="rowIndex">
+      <img *ngIf="dataItem.rank.includes('images')" [src]="dataItem.rank">
+      <span *ngIf="!dataItem.rank.includes('images')">{{ dataItem.rank }}</span>
+    </ng-template>
+
+  </kendo-grid-column>
+
+  <kendo-grid-column field="nome" title="Nome" [width]="150">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                                     operator="contains">
+      </kendo-grid-string-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column class="tx-color-grey" field="classe.num" title="Classe" [filterable]="false" [width]="150">
+    <ng-template kendoGridCellTemplate let-dataItem>
+      <img [src]="dataItem.classe.url1">
+      <img class="ml-2" [src]="dataItem.classe.url2">
+      {{ dataItem.classe.className }}
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="tempoOn" title="Tempo On (horas)" [width]="150">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                                     operator="eq">
+      </kendo-grid-string-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+
+  <kendo-grid-column field="level" title="Level" [width]="150">
+    <ng-template kendoGridFilterCellTemplate let-filter let-column="column">
+      <kendo-grid-string-filter-cell [showOperators]="false" [column]="column" [filter]="filter"
+                                     operator="eq">
+      </kendo-grid-string-filter-cell>
+    </ng-template>
+  </kendo-grid-column>
+
+</kendo-grid>
