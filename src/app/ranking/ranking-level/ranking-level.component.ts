@@ -94,12 +94,12 @@ export class RankingLevelComponent implements OnInit {
       let numClass = this.getNumClass(cols[2].querySelector('img').src.split('/').slice(-1)[0].split('.')[0]);
 
       this.ranking.push({
-        rank: rank ? `${environment.flyffUrl}/${rank.src.split('/').slice(-2).join('/')}` : cols[0].innerHTML.trim(),
+        rank: rank ? `${environment.flyffUrl}/public/img/frontend/tools/modules/ranking/images/${rank.src.split('/').slice(-1)}` : cols[0].innerHTML.trim(),
         nome: cols[1].innerHTML.trim(),
         classe: {
           num: numClass,
-          url1: `${environment.flyffUrl}/${cols[2].querySelector('img').src.split('/').slice(-3).join('/')}`,
-          url2: `${environment.flyffUrl}/${cols[2].querySelectorAll('img')[1].src.split('/').slice(-3).join('/')}`,
+          url1: `${environment.flyffUrl}/public/img/frontend/rank_icons/${cols[2].querySelector('img').src.split('/').slice(-1)}`,
+          url2: `${environment.flyffUrl}/public/img/frontend/rank_icons/${cols[2].querySelectorAll('img')[1].src.split('/').slice(-1)}`,
           className: this.classes[numClass]
         },
         tempoOn: parseInt(cols[3].innerHTML.trim()),
