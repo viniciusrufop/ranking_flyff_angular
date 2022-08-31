@@ -13,6 +13,8 @@ export class FlyffService {
   ) { }
 
   ranking(): Observable<any> {
-    return this.http.get(`${environment.corsHeroku}/${environment.flyffUrl}/ranking`, {responseType: 'text'});
+    //return this.http.get(`${environment.corsHeroku}/${environment.flyffUrl}/ranking`, {responseType: 'text'});
+    return this.http.get(`${environment.myHeroku}/get-hml-page?url=https://flyff.gpotato.com.br/ranking`);
+    //return this.http.get("http://localhost:8000/get-hml-page?url=https://flyff.gpotato.com.br/ranking");
   }
 }

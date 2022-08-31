@@ -67,8 +67,8 @@ export class RankingLevelComponent implements OnInit {
   getHtmlCode(): void {
     this.blockUI.start();
 
-    this.flyffService.ranking().subscribe((res: string) => {
-      this.pushArray(res);
+    this.flyffService.ranking().subscribe((res: any) => {
+      this.pushArray(res.data);
       this.refresh = false;
     }, error => {
       console.log('Error', error);
